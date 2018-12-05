@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <!--建立类与表的映射-->
+    <class name="model.Book" table="book" >
+        <id name="isbn" column="isbn">
+            <generator class="assigned" />
+        </id>
+        <property name="title" column="title"/>
+        <!--<property name="author" column="author"/>-->
+        <property name="price" column="price"/>
+        <property name="info" column="info"/>
+        <many-to-one name="author"  class="model.Author" column="author"  cascade="save-update" lazy="false"/>
+    </class>
+</hibernate-mapping>

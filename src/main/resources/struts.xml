@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.objectFactory" value="spring" />
+    <constant name="struts.objectFactory.spring.autoWire" value="name" />
+    <package name="default" extends="struts-default" namespace="/">
+        <interceptors>
+            <interceptor name="bookInterceptor" class="interceptor.BookInterceptor"/>
+        </interceptors>
+        <!--<default-interceptor-ref name="defaultStack" />-->
+        <action name="home" class="userAction" method="home">
+            <result name="success">/main.jsp </result>
+            <result name="error">/index.jsp </result>
+            <result name="input" >/index.jsp</result>
+        </action>
+        <action name="login" class="userAction" method="login">
+            <result name="success">/main.jsp </result>
+            <result name="error">/index.jsp </result>
+            <result name="input" >/index.jsp</result>
+        </action>
+
+        <action name="addUser" class="userAction" method="addUser">
+            <result name="success">/addUser.jsp </result>
+            <result name="error">/addUser.jsp </result>
+            <result name="input" >/addUser.jsp</result>
+        </action>
+
+        <action name="listUser" class="userAction" method="listUser">
+            <result name="success">/listUser.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listUser.jsp</result>
+        </action>
+
+        <action name="editUser" class="userAction" method="editUser">
+            <result name="success">/updateUser.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/updateUser.jsp</result>
+        </action>
+
+        <action name="updateUser" class="userAction" method="updateUser">
+            <result name="success">/updateUser.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/updateUser.jsp</result>
+        </action>
+
+        <action name="deleteUser" class="userAction" method="deleteUser">
+            <result name="success" type="redirectAction">
+                <param name="actionName">listUser</param>
+                <!--<param name="namespace">/listBook</param>-->
+            </result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listUser.jsp</result>
+        </action>
+
+
+        <action name="findUser" class="userAction" method="findUser">
+            <result name="success">/listUser.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listUser.jsp</result>
+        </action>
+
+        <action name="logout" class="userAction" method="logout">
+            <result name="success">/index.jsp </result>
+            <result name="error">/index.jsp </result>
+            <result name="input" >/index.jsp</result>
+        </action>
+
+        <action name="find" class="bookAction" method="find">
+            <result name="success">/findSuccess.jsp</result>
+            <result name="error">/findError.jsp</result>
+            <result name="input" >/findBook.jsp</result>
+        </action>
+        <action name="addbook" class="bookAction" method="add">
+            <result name="success">/addBook.jsp</result>
+            <result name="error">/addBook.jsp</result>
+            <result name="input" >/addBook.jsp</result>
+
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">10240</param>
+            </interceptor-ref>
+            <interceptor-ref name="bookInterceptor"/>
+        </action>
+        <action name="listBook" class="bookAction" method="findAll">
+            <result name="success">/listBook.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listBook.jsp</result>
+        </action>
+        <action name="findBook" class="bookAction" method="find">
+            <result name="success">/listBook.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listBook.jsp</result>
+        </action>
+        <action name="deleteBook" class="bookAction" method="delete">
+            <result name="success" type="redirectAction">
+                <param name="actionName">listBook</param>
+                <!--<param name="namespace">/listBook</param>-->
+            </result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listBook.jsp</result>
+        </action>
+        <action name="update" class="bookAction" method="update">
+            <result name="success">/updateBook.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/updateBook.jsp</result>
+
+            <interceptor-ref name="defaultStack"/>
+            <interceptor-ref name="fileUpload">
+                <param name="maximumSize">10240</param>
+            </interceptor-ref>
+            <interceptor-ref name="bookInterceptor"/>
+        </action>
+        <action name="edit" class="bookAction" method="edit">
+            <result name="success">/updateBook.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/updateBook.jsp</result>
+        </action>
+        <action name="readbookintro" class="bookAction" method="readBookIntro">
+            <result name="success">/readBookintro.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/main.jsp</result>
+        </action>
+
+        <action name="lendBook" class="bookAction" method="lendBook">
+            <result name="success">/lendBook.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/main.jsp</result>
+        </action>
+        <action name="toLendBook" class="bookAction" method="toLendBook">
+            <result name="success" type="redirectAction">
+                <param name="actionName">lendBook</param>
+                <param name="message">${message}</param>
+                <!--<param name="namespace">/listBook</param>-->
+            </result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listBook.jsp</result>
+        </action>
+
+        <action name="seeLendBook" class="bookAction" method="seeLendBook">
+            <result name="success">/lendedBook.jsp</result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/main.jsp</result>
+        </action>
+
+        <action name="lendedBook" class="bookAction" method="lendedBook">
+            <result name="success" type="redirectAction">
+                <param name="actionName">seeLendBook</param>
+                <param name="message">${message}</param>
+                <!--<param name="namespace">/listBook</param>-->
+            </result>
+            <result name="error">/main.jsp</result>
+            <result name="input" >/listBook.jsp</result>
+        </action>
+    </package>
+</struts>

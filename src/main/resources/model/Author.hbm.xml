@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    <class name="model.Author" table="Author" >
+        <id name="name" column="name">
+            <generator class="assigned" />
+        </id>
+        <property name="email" column="email" />
+        <property name="tel" column="tel" />
+        <set name="books" cascade="save-update,delete" lazy="false">
+            <key column="author" />
+            <one-to-many class="model.Book" />
+        </set>
+    </class>
+</hibernate-mapping>

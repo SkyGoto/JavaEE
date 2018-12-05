@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE validators PUBLIC
+    "-//Apache Struts//XWork Validator 1.02//EN"
+    "http://struts.apache.org/dtds/xwork-validator-1.0.2.dtd">
+
+<validators>
+    <field name="book.isbn">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>书号不能为空</message>
+        </field-validator>
+    </field>
+    <field name="book.title">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>书名不能为空</message>
+        </field-validator>
+    </field>
+    <field name="author.name">
+        <field-validator type="requiredstring">
+            <param name="trim">true</param>
+            <message>作者不能为空</message>
+        </field-validator>
+    </field>
+    <field name="author.email">
+        <field-validator type="email">
+            <param name="trim">true</param>
+            <message>邮箱格式不正确</message>
+        </field-validator>
+    </field>
+    <!--<field name="book.price">-->
+        <!--<field-validator type="int">-->
+            <!--<param name="min">10</param>-->
+            <!--<message>价格必须是大于10的整数</message>-->
+        <!--</field-validator>-->
+    <!--</field>-->
+</validators>

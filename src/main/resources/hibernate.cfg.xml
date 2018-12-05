@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql:///test1</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">zum</property>
+
+        <property name="connection.provider_class">org.hibernate.c3p0.internal.C3P0ConnectionProvider</property>
+        <property name="hibernate.c3p0.min_size">10</property>
+        <property name="hibernate.c3p0.max_size">30</property>
+        <property name="hibernate.c3p0.timeout">120</property>
+        <property name="maxStatements">40</property>
+
+
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">true</property>
+
+        <property name="hibernate.current_session_context_class">thread</property>
+
+        <mapping resource="model/Book.hbm.xml"/>
+        <mapping resource="model/User.hbm.xml"/>
+        <mapping resource="model/Author.hbm.xml"/>
+        <mapping resource="model/Lend.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>
